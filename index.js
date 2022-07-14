@@ -37,7 +37,7 @@ const usuario = new Usuario (
     [ {nombre:'Lotr' , autor:'J. R. R. Tolkien'} , {nombre:'Lotf' , autor:'William Golding'} ],
     ['Loco','Juana'])
  
-console.log(usuario.getBookNames())
+console.log(usuario.getFullName() + usuario.addMascota('Chiche') + usuario.countMascotas() + usuario.addBook('Harry','JK ROLLING') + usuario.getBookNames() )
 
 
 
