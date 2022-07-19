@@ -1,0 +1,62 @@
+[
+  {
+    "nombre": "Producto 1",
+    "precio": 100,
+    "categoria": "Remeras",
+    "id": 1
+  },
+  {
+    "nombre": "Producto 1",
+    "precio": 100,
+    "categoria": "Remeras",
+    "id": 2
+  },
+  {
+    "nombre": "Producto 1",
+    "precio": 100,
+    "categoria": "Remeras",
+    "id": 3
+  },
+  {
+    "nombre": "Producto 1",
+    "precio": 100,
+    "categoria": "Remeras",
+    "id": 5
+  },
+  {
+    "nombre": "Producto 1",
+    "precio": 100,
+    "categoria": "Remeras",
+    "id": 6
+  },
+  {
+    "nombre": "Producto 1",
+    "precio": 100,
+    "categoria": "Remeras",
+    "id": 7
+  },
+  {
+    "nombre": "Producto 1",
+    "precio": 100,
+    "categoria": "Remeras",
+    "id": 8
+  },
+  {
+    "nombre": "Producto 1",
+    "precio": 100,
+    "categoria": "Remeras",
+    "id": 9
+  },
+  {
+    "nombre": "Producto 1",
+    "precio": 100,
+    "categoria": "Remeras",
+    "id": 10
+  },
+  {
+    "nombre": "Producto 1",
+    "precio": 100,
+    "categoria": "Remeras",
+    "id": 11
+  }
+]
