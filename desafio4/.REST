@@ -1,0 +1,26 @@
+
+#  GET  http://localhost:8080/api/productos/1 HTTP/1.1
+# Content-Type: application/json
+
+# POST http://localhost:8080/api/productos HTTP/1.1
+# Content-Type: application/json
+
+# {
+#  "nombre":"Jasdasdasdasdasddd",
+#  "modelo":"rafaasddde2",
+#  "precio": 3451231231
+# }
+
+
+# PUT http://localhost:8080/api/productos/5 HTTP/1.1
+# Content-Type: application/json
+
+# {
+#    "title"     : "Fiver " ,
+#    "price"     : 555,
+#    "thumbnail" : "Believe in u"
+# }
+
+# DELETE http://localhost:8080/api/productos/8 HTTP/1.1
+# Content-Type: application/json
+ 
