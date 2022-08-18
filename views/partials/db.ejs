@@ -1,0 +1,26 @@
+<% const online = productos.length > 0; %> 
+<% if (online) { %> 
+    <table>
+        <tr style="color:rgb(37, 214, 37)">
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Edad</th>
+        </tr>
+        <% for(const producto of productos) { %>
+        <tr style="color:rgb(224, 33, 33)">
+            <td>
+                <%= producto.id %> 
+            </td>
+            <td>
+                <%= producto.nombre %> 
+            </td>
+            <td>
+                <%= producto.precio %> 
+            </td>
+        </tr>
+        <% }; %>
+    </table>
+    <% } else { %>
+    <h3>Aca se muestra otra cosa en realidad</h3>
+    <% } %>                       
+    
