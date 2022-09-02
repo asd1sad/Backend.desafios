@@ -1,10 +1,14 @@
 const express = require('express')
 const app = express()
 
+const contenedorDB = require('./contenedorDB')
+const contenedorDBfunciones = new contenedorDB() 
+
 const port = process.env.PORT || 3000
 
 const { Server:HttpServer } = require('http')
 const { Server:IOServer } = require('socket.io')
+const { read } = require('fs')
 
 const httpServer = new HttpServer(app)
 const io = new IOServer(httpServer)
@@ -19,76 +23,62 @@ const productos = [
     { id:2, nombre: 'Lompas'   , precio: 200 },
     { id:3, nombre: 'Sombreros', precio: 300 }
 ]
+/* ------------------------------------ _ ----------------------------------- */
 const chat = [
     { mensaje:'bienvenidos' }
 ]
-// const tiempo = []
-/* -------------------------------------------------------------------------- */
-/*                                     EJS                                    */
-/* -------------------------------------------------------------------------- */
+
+const tiempo = [
+    { horario:'no definido' }
+] 
+ 
 app.set('views', './views')
 app.set('view engine', 'ejs')
 
 app.get('/' , (req,res) => {
-    // console.log(usuarios)
-    res.render('index',{
+    contenedorDBfunciones.creaTabla()
+    res.render('index', {
         mensaje,
         productos
     })
 })
-
+ 
 app.post('/form' , (req,res) => {
-    const data = req.body
-    productos.push(data) 
+    // const data = req.body
 
-    // console.log( JSON.stringify(usuarios));
+    // productos.push(data) 
 
     res.render('index',{mensaje,productos}) 
 })
+
 app.post('/chat' , (req,res) => {
-    const data = req.body
-    chat.push(data) 
-
-    // console.log( JSON.stringify(usuarios));
-
-    res.render('index',{mensaje,productos,chat}) 
+    // const data = req.body
+    // chat.push(data) 
+    // contenedorDBfunciones.selectChat()
+    // contenedorDBfunciones.selectChatWhere()
+    // contenedorDBfunciones.update()
+    // contenedorDBfunciones.delete()
+    // contenedorDBfunciones.deleteWhere()
+    const dataS = req.query
+    contenedorDBfunciones.insertaChat(dataS)
+    res.render('index',{mensaje,productos,chat,tiempo}) 
 })
-/* --------------------------------- termina -------------------------------- */
-// !ejemplos
-// io.on('connection', socket => {
-//      console.log(socket.id)
 
-//      socket.on('disconnect', () => {
-//          console.log('user disconnected',socket.id)
-//      });
-
-//     socket.emit('mensaje-server', 'Hola parcero')
-
-//     socket.on('mensaje-server', data => {
-//         console.log(data)
-//     });
 io.on('connection', socket => {
     // console.log(socket.id)
 
     socket.emit('mostrar-productos', productos)
+
     socket.emit('mostrar-chat', chat)
 
-    socket.on('mensaje-server', data => {
-        console.log(data)
-    });
-    // socket.on('producto-nuevo', async (producto,cb) => {
-    //     productos.push(producto)
+    socket.on('mostrar-tiempo',resp => {
+        tiempo.push(resp)
+    })
 
-    //     const mensaje = {
-    //         mensaje:'Producto agregado',
-    //         productos 
-    //     }
+    socket.emit('mostrar-tiempoTabla',tiempo)
+    })
 
-        // io.sockets.emit('mensaje-servidor', mensaje)
-    // })
-})
-/* ------------------------------------  ----------------------------------- */
-
+    
 
 httpServer.listen(port, err => {
     if (err) throw new Error(`Error en el servidor: ${err}`)
