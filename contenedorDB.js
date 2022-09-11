@@ -1,4 +1,5 @@
-const { options } = require('./sqllite3/conexionDB.js')
+// const { options } = require('./sqllite3/conexionDB.js')
+const { options } = require('./mongo/mongo.js')
 // const { options } = require('./sqllite3/conexionDBlite3.js')
 const knex = require('knex')(options)
 
